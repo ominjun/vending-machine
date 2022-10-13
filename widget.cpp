@@ -23,21 +23,8 @@ void Widget::ChangeMoney(int diff)
 {
     money += diff;
     ui->lcdNumber->display(money);
-    if(money >= TeaMoney)
-    {
-       ui->pbCoffee->setEnabled(true);
-       ui->pbTea->setEnabled(true);
-    }
-    else if(money >= CoffeeMoney)
-    {
-        ui->pbCoffee->setEnabled(true);
-        ui->pbTea->setEnabled(false);
-    }
-    else
-    {
-        ui->pbCoffee->setEnabled(false);
-        ui->pbTea->setEnabled(false);
-    }
+    ui->pbCoffee->setEnabled(money >= CoffeeMoney);
+    ui->pbTea->setEnabled(money >= TeaMoney);
 }
 
 void Widget::on_pb50_clicked()
